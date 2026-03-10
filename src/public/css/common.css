@@ -1,0 +1,17 @@
+.header{
+  border-bottom:1px solid #eee;
+  background:#fff;
+}
+
+.header__inner{
+  max-width:1200px;
+  margin:0 auto;
+  padding:20px;
+  text-align:center;
+}
+
+.header__logo{
+  font-size:28px;
+  color:#8B7969;
+  text-decoration:none;
+}
