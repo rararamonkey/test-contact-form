@@ -140,17 +140,34 @@ FashionablyLate
 
 <div class="confirm__button">
 
-<button type="submit" class="confirm__button-submit">送信</button>
+<!-- 送信ボタン -->
+<form method="post" action="/store">
+@csrf
 
-  <button type="submit"
-          formaction="/"
-          formmethod="get"
-          class="confirm__button-fix">
-          修正
-  </button>
-</div>
+@foreach ($contact as $key => $value)
+<input type="hidden" name="{{ $key }}" value="{{ $value }}">
+@endforeach
+
+<button type="submit" class="confirm__button-submit">
+送信
+</button>
+
 </form>
 
+
+<!-- 修正ボタン -->
+<form method="post" action="/back">
+@csrf
+
+@foreach ($contact as $key => $value)
+<input type="hidden" name="{{ $key }}" value="{{ $value }}">
+@endforeach
+
+<button type="submit" class="confirm__button-fix">
+修正
+</button>
+
+</form>
 
 </div>
 

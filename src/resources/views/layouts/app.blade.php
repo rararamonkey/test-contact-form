@@ -18,14 +18,22 @@
     <a href="/" class="header__logo">
       FashionablyLate
     </a>
-@if (request()->is('register'))
-<a href="/login" class="header__btn">
-  login
-</a>
-@else
+@if (request()->is('login'))
 <a href="/register" class="header__btn">
-  register
+register
 </a>
+
+@elseif (request()->is('register'))
+<a href="/login" class="header__btn">
+login
+</a>
+
+@elseif (request()->is('admin'))
+<form action="/logout" method="post">
+@csrf
+<button class="header__btn">logout</button>
+</form>
+
 @endif
   </div>
 </header>

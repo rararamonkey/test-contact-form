@@ -54,108 +54,35 @@
   border: 1px solid #ddd;
   background: #fff;
   color: #c8aa95;
-  font-weight: 400
-}
-
-.confirm__button{
-  margin-top:40px;
-  text-align:center;
-}
-
-/* 送信ボタン */
-.confirm__button-submit{
-  padding:10px 40px;
-  background:#c8aa95;
-  color:#fff;
-  border:none;
-}
-
-/* 修正ボタン */
-.confirm__button-fix{
-  background:none;
-  border:none;
-  color:#c8aa95;
-  text-decoration:underline;
-  cursor:pointer;
-  .header {
-  background: #fff;
-}
-
-.header__inner {
-  margin: 0 auto;
-  padding: 20px 15px;
-  max-width: 1230px;
-}
-
-.header__logo {
-  display: block;
-  text-align: center;
-  color: #c8aa95;
-  text-decoration: none;
-  font-family: serif;
-  font-size: 32px;
-}
-
-.confirm__content {
-  margin: 0 auto;
-  padding: 40px 15px;
-  max-width: 900px;
-}
-
-.confirm__heading {
-  text-align: center;
-  margin-bottom: 40px;
-}
-
-.confirm__heading h2 {
-  font-family: serif;
-  color: #c8aa95;
-  font-size: 28px;
-}
-
-.confirm-table {
-  width: 100%;
-  border-collapse: collapse;
-}
-
-.confirm-table th {
-  width: 35%;
-  padding: 20px;
-  background: #c8aa95;
-  color: #fff;
-  text-align: left;
-  border: 1px solid #ddd;
   font-weight: 400;
 }
 
-.confirm-table td {
-  padding: 20px;
-  border: 1px solid #ddd;
-  background: #fff;
-  color: #c8aa95;
-  font-weight: 400
-}
+/* ボタンエリア */
 
 .confirm__button{
   margin-top:40px;
-  text-align:center;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:40px;
 }
 
 /* 送信ボタン */
+
 .confirm__button-submit{
   padding:10px 40px;
   background:#c8aa95;
   color:#fff;
   border:none;
+  cursor:pointer;
 }
 
 /* 修正ボタン */
+
 .confirm__button-fix{
   background:none;
   border:none;
   color:#c8aa95;
   text-decoration:underline;
   cursor:pointer;
-  margin-left:40px;
-}
 }

@@ -11,7 +11,7 @@
     <h2>Register</h2>
   </div>
 
-  <form class="form" action="/register" method="post">
+  <form class="form" action="/register" method="post" novalidate>
     @csrf
 
     <!-- お名前 -->
