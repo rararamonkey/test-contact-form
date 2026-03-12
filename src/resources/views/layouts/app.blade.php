@@ -12,30 +12,23 @@
 </head>
 
 <body>
-  <header class="header">
-    <div class="header__inner">
-      <div class="header-utilities">
-        <a class="header__logo" href="/">
-          Attendance Management
-        </a>
-        <nav>
-          <ul class="header-nav">
-            @if (Auth::check())
-            <li class="header-nav__item">
-              <a class="header-nav__link" href="/mypage">マイページ</a>
-            </li>
-            <li class="header-nav__item">
-              <form class="form" action="/logout" method="post">
-                @csrf
-                <button class="header-nav__button">ログアウト</button>
-              </form>
-            </li>
-             @endif
-          </ul>
-        </nav>
-      </div>
-    </div>
-  </header>
+<header class="header">
+  <div class="header__inner">
+
+    <a href="/" class="header__logo">
+      FashionablyLate
+    </a>
+@if (request()->is('register'))
+<a href="/login" class="header__btn">
+  login
+</a>
+@else
+<a href="/register" class="header__btn">
+  register
+</a>
+@endif
+  </div>
+</header>
 
   <main>
     @yield('content')

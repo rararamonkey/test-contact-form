@@ -26,7 +26,7 @@ FashionablyLate
 <h2>Confirm</h2>
 </div>
 
-<form method="post" action="/contacts">
+<form method="post" action="/store">
 @csrf
 
 <table class="confirm-table">
@@ -108,19 +108,19 @@ FashionablyLate
 <th>お問い合わせの種類</th>
 <td>
 
-@if($contact['category'] == 1)
+@if($contact['category_id'] == 1)
 商品のお届けについて
-@elseif($contact['category'] == 2)
+@elseif($contact['category_id'] == 2)
 商品の交換について
-@elseif($contact['category'] == 3)
+@elseif($contact['category_id'] == 3)
 商品トラブル
-@elseif($contact['category'] == 4)
+@elseif($contact['category_id'] == 4)
 ショップへのお問い合わせ
-@elseif($contact['category'] == 5)
+@elseif($contact['category_id'] == 5)
 その他
 @endif
 
-<input type="hidden" name="category" value="{{ $contact['category'] }}">
+<input type="hidden" name="category_id" value="{{ $contact['category_id'] }}">
 
 </td>
 </tr>
@@ -129,9 +129,9 @@ FashionablyLate
 <th>お問い合わせ内容</th>
 <td>
 
-{{ $contact['message'] }}
+{{ $contact['detail'] }}
 
-<input type="hidden" name="message" value="{{ $contact['message'] }}">
+<input type="hidden" name="detail" value="{{ $contact['detail'] }}">
 
 </td>
 </tr>
@@ -143,7 +143,7 @@ FashionablyLate
 <button type="submit" class="confirm__button-submit">送信</button>
 
   <button type="submit"
-          formaction="/contacts"
+          formaction="/"
           formmethod="get"
           class="confirm__button-fix">
           修正

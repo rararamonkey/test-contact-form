@@ -1,17 +1,47 @@
+body{
+  background:#ffffff;
+  margin:0;
+}
+
 .header{
-  border-bottom:1px solid #eee;
-  background:#fff;
+background:white;
+border-bottom:1px solid #eee;
+padding:25px 0;
 }
 
 .header__inner{
-  max-width:1200px;
-  margin:0 auto;
-  padding:20px;
-  text-align:center;
+position:relative;
+width:1000px;
+margin:0 auto;
 }
 
 .header__logo{
-  font-size:28px;
-  color:#8B7969;
-  text-decoration:none;
+position:absolute;
+left:50%;
+transform:translateX(-50%);
+font-family:"Times New Roman", serif;
+font-size:32px;
+color:#8B7969;
+text-decoration:none;
+}
+
+.header__btn{
+position:absolute;
+right:0;
+top:50%;
+transform:translateY(-50%);
+background:#f6f3ef;
+border:1px solid #d9cfc4;
+color:#8B7969;
+padding:4px 16px;
+font-size:12px;
+font-family:"Times New Roman", serif;
+text-decoration:none;
+border-radius:3px;
+}
+table{
+width:100%;
+border-collapse:collapse;
+margin-top:10px;
+background:white;
 }

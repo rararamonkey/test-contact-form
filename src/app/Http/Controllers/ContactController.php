@@ -14,7 +14,7 @@ class ContactController extends Controller
 
   public function confirm(ContactRequest $request)
   {
- $contact = $request->only(['last_name', 'first_name', 'gender', 'email', 'tel1', 'tel2', 'tel3', 'address', 'building', 'category', 'message'
+ $contact = $request->only(['last_name', 'first_name', 'gender', 'email', 'tel1', 'tel2', 'tel3', 'address', 'building', 'category_id', 'detail'
     ]);
 
     return view('contact.confirm', compact('contact'));
@@ -22,7 +22,7 @@ class ContactController extends Controller
 
   public function store(ContactRequest $request){
     Contact::create([
-        'category_id' => $request->category,
+        'category_id' => $request->category_id,
         'first_name' => $request->first_name,
         'last_name' => $request->last_name,
         'gender' => $request->gender,
@@ -30,7 +30,7 @@ class ContactController extends Controller
         'tel' => $request->tel1.$request->tel2.$request->tel3,
         'address' => $request->address,
         'building' => $request->building,
-        'detail' => $request->message
+        'detail' => $request->detail
     ]);
     return redirect('/thanks');
   }

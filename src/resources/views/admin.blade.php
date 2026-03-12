@@ -8,7 +8,7 @@
 
 <h1>Admin</h1>
 
-<form action="/admin" method="get">
+<form action="/search" method="get">
 
 <input type="text" name="keyword" value="{{ $keyword ?? '' }}" placeholder="名前やメールアドレスを入力してください">
 
@@ -33,17 +33,27 @@
 
 </select>
 
+
 <input type="date" name="date" value="{{ $date ?? '' }}">
 
 <button type="submit">検索</button>
-
-<a href="/admin">
-<button type="button">リセット</button>
-</a>
-
+<a href="/admin" class="reset-btn">リセット</a>
 </form>
 
-<table border="1">
+
+<div class="admin-top">
+
+<a href="{{ route('export', request()->query()) }}" class="export-btn">
+エクスポート
+</a>
+
+<div class="pagination-area">
+{{ $contacts->links('pagination::bootstrap-4') }}
+</div>
+
+</div>
+
+<table class="admin-table">
 
 <tr>
 <th>お名前</th>
@@ -74,7 +84,7 @@
 
 <td>{{ $contact->email }}</td>
 <td>{{ $contact->category->content }}</td>
-<td>{{ $contact->detail }}</td>
+<td>{{ Str::limit($contact->detail, 40) }}</td>
 <td>
 <button type="button" onclick='openModal(@json($contact))'>詳細</button>
 </td></tr>
@@ -82,30 +92,37 @@
 @endforeach
 
 </table>
-{{ $contacts->links() }}
 
 <div id="modal" class="modal">
-    <h2>お問い合わせ詳細</h2>
+<div class="modal-content">
+<span class="modal-close" onclick="closeModal()">×</span>
 
-<p>名前: <span id="modal-name"></span></p>
-<p>メール: <span id="modal-email"></span></p>
-<p>内容: <span id="modal-detail"></span></p>
+
+<p>名前 <span id="modal-name"></span></p>
+<p>性別 <span id="modal-gender"></span></p>
+<p>メール <span id="modal-email"></span></p>
+<p>電話番号 <span id="modal-tel"></span></p>
+<p>住所 <span id="modal-address"></span></p>
+<p>建物名 <span id="modal-building"></span></p>
+<p>お問い合わせ種類 <span id="modal-category"></span></p>
+<p>お問い合わせ内容 <span id="modal-detail"></span></p>
 
 <form id="delete-form" method="POST">
 @csrf
 @method('DELETE')
-
 <button type="submit">削除</button>
-
 </form>
-<button onclick="closeModal()">閉じる</button>
-
+</div>
 </div>
 <script>
 
+function closeModal(){
+document.getElementById("modal").classList.remove("active");
+}
+
 function openModal(contact){
 
-document.getElementById("modal").style.display = "block";
+document.getElementById("modal").classList.add("active");
 
 document.getElementById("modal-name").innerText =
 contact.last_name + " " + contact.first_name;
@@ -116,13 +133,34 @@ contact.email;
 document.getElementById("modal-detail").innerText =
 contact.detail;
 
-document.getElementById("delete-form").action =
-"/admin/delete/" + contact.id;
+document.getElementById("modal-tel").innerText =
+contact.tel;
 
+document.getElementById("modal-address").innerText =
+contact.address;
+
+document.getElementById("modal-building").innerText =
+contact.building;
+
+document.getElementById("modal-category").innerText =
+contact.category.content;
+
+let gender = "";
+
+if(contact.gender == 1){
+gender = "男性";
+}else if(contact.gender == 2){
+gender = "女性";
+}else{
+gender = "その他";
 }
 
-function closeModal(){
-document.getElementById("modal").style.display = "none";
+document.getElementById("modal-gender").innerText = gender;
+
+document.getElementById("delete-form").action =
+"/delete/" + contact.id;
+
 }
 
 </script>
+@endsection

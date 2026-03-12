@@ -24,7 +24,7 @@
       <div class="contact-form__heading">
         <h2>Contact</h2>
       </div>
-      <form class="form" action="/contacts/confirm" method="post" novalidate>
+      <form class="form" action="/confirm" method="post" novalidate>
         @csrf
         <div class="form__group">
           <div class="form__group-title">
@@ -154,13 +154,13 @@
               <span class="form__label--required">※</span>
             </div>
           <div class="form__group-content">
-            <select name="category" class="form__select" required>
+            <select name="category_id" class="form__select" required>
                 <option value="" disabled {{ old('category') ? '' : 'selected' }}>選択してください</option>
-                <option value="1" {{ old('category') == 1 ? 'selected' : '' }}>商品のお届けについて</option>
-                <option value="2" {{ old('category') == 2 ? 'selected' : '' }}>商品の交換について</option>
-                <option value="3" {{ old('category') == 3 ? 'selected' : '' }}>商品トラブル</option>
-                <option value="4" {{ old('category') == 4 ? 'selected' : '' }}>ショップへのお問い合わせ</option>
-                <option value="5" {{ old('category') == 5 ? 'selected' : '' }}>その他</option>
+                <option value="1" {{ old('category_id') == 1 ? 'selected' : '' }}>商品のお届けについて</option>
+                <option value="2" {{ old('category_id') == 2 ? 'selected' : '' }}>商品の交換について</option>
+                <option value="3" {{ old('category_id') == 3 ? 'selected' : '' }}>商品トラブル</option>
+                <option value="4" {{ old('category_id') == 4 ? 'selected' : '' }}>ショップへのお問い合わせ</option>
+                <option value="5" {{ old('category_id') == 5 ? 'selected' : '' }}>その他</option>
             </select>
               <div class="form__error">
                 @error('category')
@@ -176,10 +176,10 @@
             </div>
           <div class="form__group-content">
             <div class="form__input--textarea">
-              <textarea name="message" placeholder="お問い合わせ内容をご記載ください">{{ old('message') }}</textarea>
+              <textarea name="detail" placeholder="お問い合わせ内容をご記載ください">{{ old('detail') }}</textarea>
             </div>
             <div class="form__error">
-              @error('message')
+              @error('detail')
               <p>{{ $message }}</p>
               @enderror
           </div>
